@@ -1,0 +1,201 @@
+---
+# IMPORTANT: Change settings here, but DO NOT change the spacing.
+# Remove comments and add values where applicable.
+# The descriptions below should be self-explanatory
+
+title: "Corruption in the 19th Century Cape Colony: a Focus on Civil Servants"
+#subtitle: "This will appear as Right Header"
+
+documentclass: "elsarticle"
+
+# --------- Thesis title (Optional - set to FALSE by default).
+# You can move the details below around as you please.
+Thesis_FP: TRUE
+Entry1: "Corruption in the 19th Century Cape Colony"
+# Entry2: "\\textbf{Nico Katzke}" # textbf for bold
+Entry3: "History Essay"
+# Uni_Logo: Tex/Logo.png # Place a logo in the indicated location (from your root, e.g. defaults to ~/Tex/Logo.png) and uncomment this line. Leave uncommented for no image
+# Logo_width: 0.3 # If using a logo - use this to set width (size) of image
+# Entry4: "Under the supervision of: \\vfill Prof. Joe Smith and Dr. Frank Smith"
+Entry5: "Stellenbosch University"
+Entry6: May 2022
+# Entry7:
+# Entry8:
+
+# --------- Front Page
+# Comment: ----- Follow this pattern for up to 5 authors
+AddTitle: TRUE # Use FALSE when submitting to peer reviewed platform. This will remove author names.
+Author1: "Samantha Scott"  # First Author - note the thanks message displayed as an italic footnote of first page.
+Ref1: "Stellenbosch University, Cape Town, South Africa" # First Author's Affiliation
+Email1: "20945043\\@sun.ac.za" # First Author's Email address
+
+
+
+#CorrespAuthor_1: TRUE  # If corresponding author is author 3, e.g., use CorrespAuthor_3: TRUE
+
+keywords: "Economic History \\sep Cape Colony \\sep Corruption \\sep  Civil Servants" # Use \\sep to separate
+#JELCodes: "L250 \\sep L100"
+
+# ----- Manage headers and footers:
+#BottomLFooter: $Title$
+#BottomCFooter:
+#TopLHeader: \leftmark # Adds section name at topleft. Remove comment to add it.
+BottomRFooter: "\\footnotesize Page \\thepage" # Add a '#' before this line to remove footer.
+addtoprule: TRUE
+addfootrule: TRUE               # Use if footers added. Add '#' to remove line.
+
+# --------- page margins:
+margin: 2.3 # Sides
+bottom: 2 # bottom
+top: 2.5 # Top
+HardSet_layout: TRUE # Hard-set the spacing of words in your document. This will stop LaTeX squashing text to fit on pages, e.g.
+# This is done by hard-setting the spacing dimensions. Set to FALSE if you want LaTeX to optimize this for your paper.
+
+# --------- Line numbers
+linenumbers: FALSE # Used when submitting to journal
+
+# ---------- References settings:
+# You can download cls format here: https://www.zotero.org/ - simply search for your institution. You can also edit and save cls formats here: https://editor.citationstyles.org/about/
+# Hit download, store it in Tex/ folder, and change reference below - easy.
+bibliography: Tex/ref.bib       # Do not edit: Keep this naming convention and location.
+csl: Tex/harvard-stellenbosch-university.csl # referencing format used.
+# By default, the bibliography only displays the cited references. If you want to change this, you can comment out one of the following:
+#nocite: '@*' # Add all items in bibliography, whether cited or not
+# nocite: |  # add specific references that aren't cited
+#  @grinold2000
+#  @Someoneelse2010
+
+# ---------- General:
+RemovePreprintSubmittedTo: TRUE  # Removes the 'preprint submitted to...' at bottom of titlepage
+Journal: "Journal of Finance"   # Journal that the paper will be submitting to, if RemovePreprintSubmittedTo is set to TRUE.
+toc: FALSE                       # Add a table of contents
+numbersections: TRUE             # Should sections (and thus figures and tables) be numbered?
+fontsize: 12pt                  # Set fontsize
+linestretch: 1.2                # Set distance between lines.
+link-citations: TRUE            # This creates dynamic links to the papers in reference list.
+
+### Adding additional latex packages:
+# header-includes:
+#    - \usepackage{colortbl} # Add additional packages here.
+
+output:
+  pdf_document:
+    keep_tex: TRUE
+    template: Tex/TexDefault.txt
+    fig_width: 3.5 # Adjust default figure sizes. This can also be done in the chunks of the text.
+    fig_height: 3.5
+---
+
+<!-- First: Set your default preferences for chunk options: -->
+
+<!-- If you want a chunk's code to be printed, set echo = TRUE. message = FALSE stops R printing ugly package loading details in your final paper too. I also suggest setting warning = FALSE and checking for warnings in R, else you might find ugly warnings in your paper. -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 6, fig.height = 5, fig.pos="H", fig.pos = 'H')
+# Note: Include = FALSE implies the code is executed, but not printed in your pdf.
+# warning and message = FALSE implies ugly messages and warnings are removed from your pdf.
+# These should be picked up when you execute the command chunks (code sections below) in your rmd, not printed in your paper!
+
+# Lets load in example data, and see how this can be stored and later called from your 'data' folder.
+if(!require("tidyverse")) install.packages("tidyverse")
+library(tidyverse)
+Example_data <- Texevier::Ex_Dat
+
+# Notice that as you are working in a .Rproj file (I am assuming you are) - the relative paths of your directories start at your specified root.
+# This means that when working in a .Rproj file, you never need to use getwd() - it is assumed as your base root automatically.
+write_rds(Example_data, path = "data/Example_data.rds")
+
+```
+
+<!-- ############################## -->
+
+<!-- # Start Writing here: -->
+
+<!-- ############################## -->
+
+# Introduction
+
+The following paper aims to establish whether the 19th century Cape Colony was corrupt or not, as well as the extent of this corruption. To formulate a better understanding of the Cape Colony during the 19th century, a short historical background regarding the rule of the British as well as the financial and economic growth is discussed. After this, the investigation into the existence of corruption is performed. A matching process is conducted between two data sets, namely a civil servant list and a shareholders of limited liability companies list. In this process, it is found that names occur in the two data sets, suggesting corruption. This assumption is made according to the Civil Service Act of 1885 as amended by Act 31 of 188. To further investigate corruption in the Cape Colony, the paper seeks to establish which of the offices in the civil servant list were most problematic, as well as which industries were invested in by the corrupt civil servants. Furthermore, the paper narrows the investigation to the industries invested in by the most corrupt office. The results of the paper indicate that there was corruption in the 19th century Cape Colony, with the most problematic office being the Divisional Courts and Offices. The industry invested in most by the civil servants was real estate. When focusing on Divisional Courts and Offices, the same number of individuals invested in real estate and mining - however more shares were bought in real estate. There are limitations to this approach that are worth mentioning, such as issues with the formatting of names, as well as the date of investments and the period of active service.
+
+\newpage
+The structure of the paper is as follows, section 1 contains a short background on corruption in South Africa, as well as the financial atmosphere and economic progress of the Cape Colony in the late 1800s and early 1900s. Section 2 describes the data and methods used in investigating corruption in the Cape Colony. Section 3 presents the results of the investigation, and includes a discussion thereof. Section 4 highlights the limitations of the investigation. Lastly, section 5 contains the concluding remarks of the paper. 
+
+# Background
+
+Due to the limited literature on the topic of corrupt civil servants in the 19th century Cape Colony, this paper is an attempt to contribute to the field of research. To develop an understanding of the Cape Colony during the 19th century, a short historical background discussing corruption, as well as the financial and economic atmosphere of the Cape Colony during the 19th century is included.
+
+Corruption is defined as the abuse of a trusted position with the purpose of illegally obtaining benefit (Myint, 2000:35) & (Tanzi, 1998). As Ling (2012) argues, a majority of the literature interprets this definition of corruption as to emphasize an exchange, thus making corruption equivalent to bribery. As a departure from commonality, this paper focuses on a broader definition of the term, whereby an exchange does not have to occur. The focus of this investigation is therefore placed on the use of a position which creates an imbalance of knowledge, resulting in personal benefit. The public opinion is that South Africa is riddled with corruption. Due to minimal written records, it is difficult to understand when corruption began in South Africa. However, previous literature does suggest that Jan van Riebeeck, the so-called founding father of the Cape Colony, came to the Cape because he was accused of corruption in Vietnam (Blackman & Dall, 2021). As Blackman and Dall (2021) depict, the pattern of corruption has persisted throughout South Africa's history. As such, it becomes an important topic of research.
+
+In this investigation, the Cape Colony is the focus. The Cape Colony was governed by the Dutch East India Company from the 1600s until the British took over in 1806. Once the British took over, the nature of the administration in the Cape Colony changed, which impacted the economic fortune of the Cape Colony residents. British institutions, such as legal systems and parliament were established (Gwaindepi, 2018:68). An example of the establishment of the legal system in the Cape Colony was the attempt of the government to hold civil servants accountable. The government introduced the Civil Service Bill on the 27th of May 1884 into the House of Assembly (Cape of Good Hope Civil Service List). According to the Civil Service Act of 1885 as amended by Act 31 of 1888, it is suggested that civil servants may not hold office for profit during their time in active service. This is because civil servants may influence the regulation of private companies for their own benefit, as they have something to gain. Since government officials and civil servants make policy decisions that directly affect corporate profitability, they have more insight on the industries they are investing. The same is therefore not possible for the general public, creating an imbalance in knowledge (Blau et al., 2022:79). Even with these newly founded laws in the Cape Colony, the question remains whether there was a perpetuation of corruption into the late 19th century.
+
+A pivotal point in South Africa's history was the abolition of slavery in 1834. Following this 'emancipation', former slave were required to spend four years as an 'apprentice', under the same conditions (Ekama & Ross, 2021:405). Nevertheless, this emancipation of slaves resulted in economic and financial growth in the Cape Colony. One of the features of this economic growth was the establishment of local banks and insurance companies, which resembled the British financial institutions at the time (Greyling & Verhoef, 2017:131). With this upsurge in banks and a boom in the financial sector, the popularity of investing in limited liability companies increased. The innovation of limited liability companies is a notable source of the financial development in the Cape Colony. This is because such companies provided businesses with greater access to capital (Maphosa, et al., 2021:1). The Limited Liability Joint Stock Company Act extended the capital market by lowering the risks associated with dealing in shares. As a result, joint stock companies grew and there was an increase in the distribution of income in the colony. The nature of joint stock companies and the capital market had a noteworthy economic impact on the Cape Colony (Maphosa, 223:2021). Due to the attractiveness of investing in limited liability companies, the cost of civil servants being caught is mitigated by the benefit. 
+
+Another pivotal point in South Africa's history was the discovery of diamonds and gold in the mid-19th century. The economic progress of South Africa in the 19th century was reliant on the mining sector (Gwaindepi, 2018:65). The discovery in diamonds in 1867 changed South Africa's economy from one that was unstable and agricultural based, to one that was mineral-industrial based. The discovery of the minerals sparked urbanisation in not only the in-land, but also the coast of South Africa. This would result in the further development of other industries, such as manufacturing and real estate. With the discovery of diamonds, the newly established banks became important. The discovery of gold saw an increase in investments in the mining industry, both local and foreign. Gold and diamond mining became a large contributor to South Africa's economic growth (Gwaindepi, 2018:77).
+
+\newpage
+These pivotal points in South Africa's history play a role in this investigation as they may have impacted the private companies at the time, and therefore the data in question. This impact could explain investor behaviour, as well as give an indication of information that corrupt officials may have had in the 19th century Cape Colony. 
+
+# Data and Methodology
+
+The data used in the investigation is a list of civil servants as well as a list of limited liability companies from the 19th century. The shareholders of limited liability data set has approximately 7 000 observations, and the civil servant list has roughly 40 000 observations. When a name appears in both lists, the individual was both a civil servant and an investor. To compile a reduced list of these individuals, a matching process is conducted. During this process, the names appearing in the data sets are compared and matched. If there are matches, it is concluded that there was corruption in the 19th century Cape Colony. The corrupt servants are grouped according to office, and the number of shares held in each office is tallied. The top 10 offices with the most aggregate shares are presented in Figure 4.1. The number of shares bought into each industry by the corrupt servants is tallied. Figure 4.2 presents the top 10 industries with the highest number of shares bought. 
+
+# Results and Discussion
+
+After matching the names, it is evident that there was corruption in the 19th century Cape Colony. Once the full names across the two data sets have been matched, there are 173 matches between the data sets. To evaluate the impact of the variation in which the first names are written in the data sets, a match according to surname alone is conducted. As such, there are 1013 surname matches. As a result of this disparity, the extent of the corruption in the 19th century Cape Colony cannot be commented on as the results are bias.
+
+Using the data matched according to full name for further analysis, the most problematic offices are investigated. The most problematic office is defined as the office with the highest number of shares. As Figure 4.1 below indicates, the most problematic office was the Divisional Courts and Offices. Of the 20 corrupt Divisional Courts and Offices employees, two of them were Chief Constables, namely John Keating and Frederick William Smith. These individuals were responsible for leading the police force, thereby enforcing the laws at the time (College of Policing, 2022). For their own benefit the Chief Constables could then choose which laws to enforce, and which to refrain from enforcing. Along with the Chief Constables, the data suggests a number of clerks were also corrupt. Due to limitations, it is difficult to analyse which positions the other corrupt individuals held in the office.
+
+![Number of Shares per Office](/Users/samanthascott/Desktop/Picture18.png){height="50%"}
+
+According to Hunt (2005:2) as well as Transparency International (2004), more than half of the countries' surveyed  respondents perceive the police and the judiciary as the most corrupt institutions. This indicates that the findings found in this paper are not unique to the Cape Colony nor to the 19th century, as there seems to be a global trend in even more recent years. This global trend is worrying as members working in the law enforcement and judiciary have the power to make decisions that could impact the success of the industry, indirectly influencing the economy.
+
+As depicted in Figure 4.2 below, most of the corrupt civil servants invested in real estate. As there is very little literature on the real estate industry in the 19th century Cape Colony, there are two possible reasons for the interest in investing in property, both linked to the emancipation of slaves. The first hypothesis is that with the abolition of slavery, there was an influx of 'free' individuals seeking a place of residence. The second hypothesis could be that as a result of removing a financial asset (slaves) from the economy, a rise in inflation is experienced. As such, the demand for property decreases as it becomes more expensive to be in debt. With the decrease in demand, a decrease in prices follow. This makes it more attractive to invest in property. This attractiveness is attributed to the belief that property prices will rise again - it is possible that civil servants may be awarded this information before the general public.
+
+![Number of Shares per Industry](/Users/samanthascott/Desktop/Picture17.png){height="50%"}
+
+When investigating the Divisional Court and Offices corrupt employees alone, the mining and real estate industries were invested in by the highest number of corrupt individuals. Real estate had more shares bought than mining. As depicted in Figure 4.3 below, 67% of shares were bought in the real estate industry and 29% in the mining industry by the corrupt employees in the Divisional Courts and Offices. The rest of the industries make up a smaller portion. The interest in investing in mining could be have been due to the discovery of diamonds and gold during the mid-19th century in South Africa (Gwaindepi & Fourie, 2020:341). The investments in the mining industry occurred after the discovery of diamonds and gold. Further research in this field could be done to investigate what insider information the Divisional Courts and Offices would have had at the time that made investing in mining attractive, apart from the discovery of diamonds and gold - which was information known to the public. Control of other industries, for example manufacturing of tools used in mining, that are complementary to the mining industry could be a reason for the incentive to invest in mining. 
+
+![Number of Shares per Industry, According to Divisional Courts and Offices](/Users/samanthascott/Desktop/Write_Up/Pie.png){height="45%"}
+
+# Limitations
+
+This study has some limitations. The biggest issue is that the literature and data on the topic is limited. The matched data set has few observations, making it difficult to make informed conclusions regarding the questions at hand. An issue with the method of matching full names in the data sets is that the way in which first names are written varies. For example, the list of limited liability companies contains initials for first and second names, whereas majority of the names in the civil servant list are written out in full. As a consequence, when matching the names according to full name, there are less matches than what there were in reality. When matching according to surname alone, the issue of matching initials and full first names is overcome. However, the likelihood of different individuals have the same last name is high. As such, there will be more matches evident than there would have been in reality. Another issue worth mentioning is that more common names are more likely to produce matches, resulting in bias results. Due to the variation in the naming of positions held in office, it is difficult to make strong conclusions regarding the extent of power the individuals held, without making speculative assumptions. 
+
+The act of investing and being a civil servant would only be considered as corruption if the investment was made during the time of service. As such, some of the matches may not be regarded as corruption as the time of investment does not necessarily correspond with the time of active service, creating a false representation of the individuals. Another issue with the study is that there may have been room for human error. There may have been physical mistakes made during the process of entering data, as well as when compiling the two data sets. If mistakes were made, an accurate number of corrupt individuals would not have been found. As a result of these limitations, the number of corrupt employees cannot be accurately predicted, and therefore the extent of corruption cannot be commented on. 
+
+# Conclusion
+
+In conclusion, the findings suggest that corruption was present in the 19th century Cape Colony. The matching process described in methodology presents matches between the data sets on civil servants and shareholders of limited liability companies. The number of matches is low in comparison to the number of observations in both data sets, however, is still noticeable. The data sets present limitations, and the low count of matches can be attributed to these limitations, suggesting that the trend of corruption in civil servants may be stronger than found. The matches indicate that most investors were in Divisional Courts and Offices and that real estate and mining were two industries of most interest. These findings correlate with the two key moments in the 19th Century South Africa, namely the abolition of slavery and the discovery of diamonds and gold. It also suggests that trace of corruption, as found, in these industries could have had an impact on the industries themselves and furthermore, economy of South Africa. Thus, due to the influence civil servants could have on the decisions regarding industries, there is an imbalance in power and information between civil servants and the general public. It is proposed that further research with regards to the influence of office on these industries, particularly the Divisional Courts and Offices on real estate is performed. It is suggested that further research on format of the data sets used will help obtain more concise findings. Although there are limitations endured in the matching process, the method has resulted in a new data set through which further investigation may occur.
+
+\newpage
+
+# Reference List
+
+Blackman, M. & Dall, N. 2021. Rogues' Gallery: an Irreverent History of Corruption in South Africa, from the VOC to the ANC. Cape Town: Penguin Books.
+
+Blau, B. M., Griffith, T. G. & Whitby, R. J. 2022. On the Ethics of "Non‑Corporate" Insider Trading. *Journal of Business Ethics*, 177:79--93.
+
+Cape of Good Hope Civil Service List, 1885-1902, CCP 11/4/1-11/4/17. Western Cape Archives and Records Service, Cape Town.
+
+*College of Policing* [Online]. 2022. Available: https://profdev.college.police.uk/professional-profile/chief-constable/ [2022, May 16].
+
+Ekama, K. & Ross, R. 2021. The Emancipation of the Enslaved in the Cape Colony: Historiography and Introduction. *Journal of Southern African Studies*, 47(3):405-416.
+
+Greyling, L. & Verhoef, G. 2017. Savings and economic growth: a historical analysis of the Cape Colony economy, 1850–1909. *Economic History of Developing Regions*, 32(2):127-176.
+
+Gwaindepi, A. 2018.  State building in the colonial era: Public revenue, expenditure and borrowing patterns in the Cape Colony, 1820-1910. Unpublished doctoral dissertation. Stellenbosch: University of Stellenbosch.
+
+Gwaindepi, A. & Fourie, J. 2020. Public Sector Growth in the British Cape Colony: Evidence from New Data on Expenditure and Foreign Debt. *South African Journal of Economics*, 88(3):341-367.
+
+Hunt, J. 2005. Why Are Some Public Officials More Corrupt Than Others? Working Paper No. 11595. Nber, Cambridge: National Bureau of Economic Research.  
+
+Ling, L. 2012. The "Production" of Corruption in China's Courts: Judicial Politics and Decision Making in a One-Party State. *Law and Social Inquiry*, 37(4):848-877.
+
+Maphosa, L. M. 2021. A historical analysis of joint stock companies in the Cape Colony between 1892 and 1902. Unpublished doctoral dissertation. Stellenbosch: University of Stellenbosch.
+
+Myint, U. 2000. Corruption: Causes, Consequences and Cures. *Asia-Pacific Development Journal*, 7(2):33-58.
+
+Tanzi, Vito. 1998. Corruption around the World: Causes, Consequences, Scope, and Cures. IMF Staff Papers 45(4):559-94.
+
+Transparency International (2004), “Report on the Transparency International Global Corruption Barometer 2004”, www.transparency.org/surveys/index.html, accessed 21 May 2005.
+
